@@ -25,6 +25,7 @@ Thumbs.db
 *.flac
 !sample_audio/
 
-# PyTorch models / checkpoints (if large)
+# PyTorch models / checkpoints (allow pre-trained production weights)
 *.pt
 *.pth
+!model_weights.pth
