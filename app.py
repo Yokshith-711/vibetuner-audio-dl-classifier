@@ -265,21 +265,24 @@ class AudioClassifierDNN(nn.Module):
         return self.net(x)
 
 
-@st.cache_resource
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 def load_production_model():
     model = AudioClassifierDNN(input_dim=26, num_classes=4)
-    weights_path = "model_weights.pth"
+    weights_path = os.path.join(BASE_DIR, "model_weights.pth")
     if os.path.exists(weights_path):
         try:
-            model.load_state_dict(torch.load(weights_path, weights_only=True))
-        except Exception:
+            state_dict = torch.load(weights_path, weights_only=True)
+            model.load_state_dict(state_dict)
+        except Exception as e:
             pass
     model.eval()
 
     scaler_mean, scaler_std = None, None
-    if os.path.exists("scaler_params.json"):
+    scaler_path = os.path.join(BASE_DIR, "scaler_params.json")
+    if os.path.exists(scaler_path):
         try:
-            with open("scaler_params.json") as f:
+            with open(scaler_path) as f:
                 params = json.load(f)
                 scaler_mean = np.array(params["mean"], dtype=np.float32)
                 scaler_std = np.array(params["std"], dtype=np.float32)
