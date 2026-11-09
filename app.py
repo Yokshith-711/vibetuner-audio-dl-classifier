@@ -771,7 +771,7 @@ if active_audio_bytes is not None:
             ax[0].set_title("Acoustic Signal Amplitude Envelope", color='#F1F5F9', fontsize=11, fontweight='600', pad=8)
             ax[0].set_facecolor('#111827')
             ax[0].tick_params(colors='#94A3B8', labelsize=8)
-            ax[0].grid(color='rgba(255,255,255,0.05)', linestyle='--')
+            ax[0].grid(color='#FFFFFF', alpha=0.08, linestyle='--')
             
             # 2. STFT Spectrogram
             img = librosa.display.specshow(
