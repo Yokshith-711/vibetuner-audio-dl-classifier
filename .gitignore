@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Streamlit config / cache
+.streamlit/
+*/.streamlit/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Audio and temporary test files
+*.wav
+*.mp3
+*.ogg
+*.flac
+!sample_audio/
+
+# PyTorch models / checkpoints (if large)
+*.pt
+*.pth
